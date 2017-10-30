@@ -245,6 +245,7 @@ if(build)
     set(incs
         "include/pcl/${SUBSYS_NAME}/boost.h"
         "include/pcl/${SUBSYS_NAME}/eigen.h"
+        "include/pcl/${SUBSYS_NAME}/buffers.h"
         "include/pcl/${SUBSYS_NAME}/debayer.h"
         "include/pcl/${SUBSYS_NAME}/file_io.h"
         "include/pcl/${SUBSYS_NAME}/auto_io.h"
@@ -301,6 +302,7 @@ if(build)
 
     set(impl_incs
         "include/pcl/${SUBSYS_NAME}/impl/ascii_io.hpp"
+        "include/pcl/${SUBSYS_NAME}/impl/buffers.hpp"
         "include/pcl/${SUBSYS_NAME}/impl/pcd_io.hpp"
         "include/pcl/${SUBSYS_NAME}/impl/auto_io.hpp"
         "include/pcl/${SUBSYS_NAME}/impl/lzf_image_io.hpp"
