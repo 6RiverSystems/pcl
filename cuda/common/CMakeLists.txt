@@ -27,7 +27,9 @@ set(common_incs
     include/pcl/cuda/common/eigen.h
     include/pcl/cuda/common/point_type_rgb.h
     )
-
+set(gpu_incs
+    include/pcl/cuda/pcl_cuda_base.h
+)
 include_directories(./include)
 #set(LIB_NAME pcl_${SUBSYS_NAME})
 set(EXT_DEPS CUDA)
@@ -37,3 +39,4 @@ set(EXT_DEPS CUDA)
 # Install include files
 PCL_ADD_INCLUDES(${SUBSYS_NAME} "cuda" ${incs})
 PCL_ADD_INCLUDES(${SUBSYS_NAME} ${SUBSYS_PATH} ${common_incs})
+PCL_ADD_INCLUDES(${SUBSYS_NAME} "../pcl_cuda" ${gpu_incs})

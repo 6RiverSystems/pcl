@@ -29,7 +29,7 @@ if(BUILD_CUDA AND CUDA_FOUND)
 	filters/include/pcl/cuda/filters/passthrough.h
 	filters/include/pcl/cuda/filters/voxel_grid.h
 	)
-    PCL_ADD_INCLUDES(${SUBSYS_NAME} "cuda/filters" ${incs})
+    PCL_ADD_INCLUDES(${SUBSYS_NAME} "../pcl_cuda/filters" ${incs})
 
 endif()
 

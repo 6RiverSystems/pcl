@@ -81,7 +81,8 @@ if(build)
         "include/pcl/${SUBSYS_NAME}/morphological_filter.h"
         "include/pcl/${SUBSYS_NAME}/local_maximum.h"
         "include/pcl/${SUBSYS_NAME}/model_outlier_removal.h"
-        )
+        "include/pcl/${SUBSYS_NAME}/gpu_min_max_3d.h"
+         )
 
     set(impl_incs
         "include/pcl/${SUBSYS_NAME}/impl/conditional_removal.hpp"
@@ -120,10 +121,24 @@ if(build)
         "include/pcl/${SUBSYS_NAME}/impl/model_outlier_removal.hpp"
         )
 
+    include(FindCUDA)
+    set(CUDA_USE_STATIC_CUDA_RUNTIME OFF CACHE INTERNAL "" FORCE)
+    if(CUDA_FOUND)
+	    set(CUDA_VERBOSE_BUILD TRUE)
+            message(status "CUDA FOUND")
+            set(CUDA_NVCC_FLAGS -std=c++11 -DHAVE_CUDA -default-stream=per-thread -cudart=shared ${CUDA_NVCC_FLAGS})
+            include_directories("${CMAKE_CURRENT_SOURCE_DIR}/include")
+            SET(ALL_CUDA_LIBS /usr/local/cuda/lib64/libcudart.so /usr/local/cuda/lib64/stubs/libcuda.so)
+            SET(CUDA_PROPAGATE_HOST_FLAGS OFF)
+            set(PCL_GPU_NAME "pcl_${SUBSYS_NAME}_gpu_kernels")
+            PCL_CUDA_ADD_LIBRARY("${PCL_GPU_NAME}" "${SUBSYS_NAME}" STATIC ${CMAKE_CURRENT_SOURCE_DIR}/src/gpu_min_max_3d.cu)
+	    #CUDA_COMPILE(gpu_kernels SHARED ${CMAKE_CURRENT_SOURCE_DIR}/src/gpu_min_max_3d.cu)
+        endif()
+
     set(LIB_NAME "pcl_${SUBSYS_NAME}")
     include_directories("${CMAKE_CURRENT_SOURCE_DIR}/include")
     PCL_ADD_LIBRARY("${LIB_NAME}" "${SUBSYS_NAME}" ${srcs} ${incs} ${impl_incs})
-    target_link_libraries("${LIB_NAME}" pcl_common pcl_sample_consensus pcl_search pcl_kdtree pcl_octree)
+    target_link_libraries("${LIB_NAME}" pcl_common pcl_sample_consensus pcl_search pcl_kdtree pcl_octree ${PCL_GPU_NAME} ${ALL_CUDA_LIBS})
     PCL_MAKE_PKGCONFIG("${LIB_NAME}" "${SUBSYS_NAME}" "${SUBSYS_DESC}" "${SUBSYS_DEPS}" "" "" "" "")
 
     # Install include files

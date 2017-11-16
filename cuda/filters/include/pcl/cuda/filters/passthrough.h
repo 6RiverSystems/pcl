@@ -40,6 +40,8 @@
 #include <thrust/count.h>
 #include <thrust/remove.h>
 #include <vector_types.h>
+#include <pcl/cuda/point_cloud.h>
+#include <cmath>
 
 namespace pcl_cuda
 {
@@ -51,7 +53,7 @@ namespace pcl_cuda
     operator () (const PointXYZRGB &pt)
     //operator () (const float3 &pt)
     {
-      return (isfinite (pt.x) && isfinite (pt.y) && isfinite (pt.z));
+      return (std::isfinite (pt.x) && std::isfinite (pt.y) && std::isfinite (pt.z));
     }
   };
 
@@ -61,7 +63,7 @@ namespace pcl_cuda
     __inline__ __device__ bool
     operator () (const float &pt)
     {
-      return (isfinite (pt));
+      return (std::isfinite (pt));
     }
   };
 
@@ -72,9 +74,9 @@ namespace pcl_cuda
     operator () (const PointCloudSOA<Device>::tuple_type& tuple)
     {
       using thrust::get;
-      return (!isfinite (get<0> (tuple)) || 
-              !isfinite (get<1> (tuple)) || 
-              !isfinite (get<2> (tuple)));
+      return (!std::isfinite (get<0> (tuple)) || 
+              !std::isfinite (get<1> (tuple)) || 
+              !std::isfinite (get<2> (tuple)));
     }
   };
 

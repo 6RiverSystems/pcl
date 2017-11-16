@@ -41,6 +41,7 @@
 #include <iostream>
 #include <pcl/common/io.h>
 #include <pcl/filters/impl/voxel_grid.hpp>
+#include <pcl/filters/gpu_min_max_3d.h>
 
 typedef Eigen::Array<size_t, 4, 1> Array4size_t;
 
@@ -214,13 +215,22 @@ pcl::VoxelGrid<pcl::PCLPointCloud2>::applyFilter (PCLPointCloud2 &output)
 
   Eigen::Vector4f min_p, max_p;
   // Get the minimum and maximum dimensions
-  if (!filter_field_name_.empty ()) // If we don't want to process the entire cloud...
-    getMinMax3D (input_, x_idx_, y_idx_, z_idx_, filter_field_name_, 
-                 static_cast<float> (filter_limit_min_), 
-                 static_cast<float> (filter_limit_max_), min_p, max_p, filter_limit_negative_);
-  else
-    getMinMax3D (input_, x_idx_, y_idx_, z_idx_, min_p, max_p);
 
+    // make a call to gpu implementation of getMinMax3D. Run on cpu if failed
+
+    if (!filter_field_name_.empty ()) { // If we don't want to process the entire cloud...
+        if (!pcl::filters::gpu::getMinMax3D(input_, x_idx_, y_idx_, z_idx_, filter_field_name_,
+                                           static_cast<float> (filter_limit_min_),
+                                           static_cast<float> (filter_limit_max_), min_p, max_p, filter_limit_negative_)) {
+            getMinMax3D(input_, x_idx_, y_idx_, z_idx_, filter_field_name_,
+                        static_cast<float> (filter_limit_min_),
+                        static_cast<float> (filter_limit_max_), min_p, max_p, filter_limit_negative_);
+        }
+    } else {
+        if(!pcl::filters::gpu::getMinMax3D(input_, x_idx_, y_idx_, z_idx_, min_p, max_p)){
+            getMinMax3D(input_, x_idx_, y_idx_, z_idx_, min_p, max_p);
+        }
+    }
   // Check that the leaf size is not too small, given the size of the data
   int64_t dx = static_cast<int64_t>((max_p[0] - min_p[0]) * inverse_leaf_size_[0])+1;
   int64_t dy = static_cast<int64_t>((max_p[1] - min_p[1]) * inverse_leaf_size_[1])+1;
