@@ -3,6 +3,7 @@
 //
 
 #include "pcl/filters/boost.h"
+#include "../../../../../../usr/local/cuda-8.0/include/driver_types.h"
 #include <pcl/filters/filter.h>
 #include <pcl/filters/gpu_min_max_3d.h>
 #include <Eigen/Core>
@@ -255,12 +256,14 @@ namespace pcl {
                 cuStreamCreate(&stream, CU_STREAM_NON_BLOCKING);
                 thrust::device_vector<Eigen::Array4f> all_distance_points(nr_points);
 
-
-                cuMemHostRegister(reinterpret_cast<void *>(const_cast<uint8_t *>(cloud->data.data())), sizeof(cloud->data[0]) * cloud->data.size(), CU_MEMHOSTREGISTER_PORTABLE | CU_MEMHOSTREGISTER_DEVICEMAP);
+                uint8_t * gpu_data_cloud;
+                cudaMalloc(&gpu_data_cloud, sizeof(cloud->data[0]) * cloud->data.size());
+                cudaMemcpy(gpu_data_cloud, cloud->data.data(), sizeof(cloud->data[0]) * cloud->data.size(), cudaMemcpyHostToDevice );
+                //cuMemHostRegister(reinterpret_cast<void *>(const_cast<uint8_t *>(cloud->data.data())), sizeof(cloud->data[0]) * cloud->data.size(), CU_MEMHOSTREGISTER_PORTABLE | CU_MEMHOSTREGISTER_DEVICEMAP);
                 //cuMemHostGetDevicePointer();
 
-                CUdeviceptr device_ptr;
-                cuMemHostGetDevicePointer(&device_ptr, reinterpret_cast<void *>(const_cast<uint8_t *>(cloud->data.data())), 0);
+                //CUdeviceptr device_ptr;
+                //cuMemHostGetDevicePointer(&device_ptr, reinterpret_cast<void *>(const_cast<uint8_t *>(cloud->data.data())), 0);
                 //cuMemcpy();
                 dim3 threadsPerBlock(1024, 1);
                 dim3 numBlocks(static_cast<int> (std::ceil(static_cast<float>(cloud->data.size()) / threadsPerBlock.x)),
@@ -268,7 +271,7 @@ namespace pcl {
 
                 //kernel launch
 
-                convertToDeviceVector<<<threadsPerBlock, numBlocks, 0, stream>>>((unsigned char *)device_ptr, nr_points, cloud->fields[x_idx].offset, cloud->fields[y_idx].offset, cloud->fields[z_idx].offset, cloud->point_step, thrust::raw_pointer_cast(&all_distance_points[0]));
+                convertToDeviceVector<<<threadsPerBlock, numBlocks, 0, stream>>>((unsigned char *)gpu_data_cloud, nr_points, cloud->fields[x_idx].offset, cloud->fields[y_idx].offset, cloud->fields[z_idx].offset, cloud->point_step, thrust::raw_pointer_cast(&all_distance_points[0]));
 
                 convert_indefinite_to_max_value<Eigen::Array4f> f1;
                 compute_minimum_of_bounding_box<Eigen::Array4f> f2;
@@ -278,8 +281,9 @@ namespace pcl {
                 auto min_value = thrust::transform_reduce(thrust::cuda::par.on(stream), all_distance_points.begin(), all_distance_points.end(), f1, min_p, f2);
                 auto max_value = thrust::transform_reduce(thrust::cuda::par.on(stream), all_distance_points.begin(), all_distance_points.end(), g1, max_p, g2);
 
-                cuMemHostUnregister(reinterpret_cast<void *>(const_cast<uint8_t *>(cloud->data.data())));
+                //cuMemHostUnregister(reinterpret_cast<void *>(const_cast<uint8_t *>(cloud->data.data())));
                 cuStreamSynchronize(stream);
+                cudaFree(gpu_data_cloud);
                 cuStreamDestroy(stream);
                 cuCtxSynchronize();
                 cuCtxPopCurrent(&context);
@@ -332,11 +336,15 @@ namespace pcl {
                 thrust::device_vector<Eigen::Array4f> all_distance_points(nr_points);
 
 
-                cuMemHostRegister(reinterpret_cast<void *>(const_cast<uint8_t *>(cloud->data.data())), sizeof(cloud->data[0]) * cloud->data.size(), CU_MEMHOSTREGISTER_PORTABLE | CU_MEMHOSTREGISTER_DEVICEMAP);
+                uint8_t * gpu_data_cloud;
+                cudaMalloc(&gpu_data_cloud, sizeof(cloud->data[0]) * cloud->data.size());
+                cudaMemcpy(gpu_data_cloud, cloud->data.data(), sizeof(cloud->data[0]) * cloud->data.size(), cudaMemcpyHostToDevice );
+
+                //cuMemHostRegister(reinterpret_cast<void *>(const_cast<uint8_t *>(cloud->data.data())), sizeof(cloud->data[0]) * cloud->data.size(), CU_MEMHOSTREGISTER_PORTABLE | CU_MEMHOSTREGISTER_DEVICEMAP);
                 //cuMemHostGetDevicePointer();
 
-                CUdeviceptr device_ptr;
-                cuMemHostGetDevicePointer(&device_ptr, reinterpret_cast<void *>(const_cast<uint8_t *>(cloud->data.data())), 0);
+                //CUdeviceptr device_ptr;
+                //cuMemHostGetDevicePointer(&device_ptr, reinterpret_cast<void *>(const_cast<uint8_t *>(cloud->data.data())), 0);
                 //cuMemcpy();
                 dim3 threadsPerBlock(1024, 1);
                 dim3 numBlocks(static_cast<int> (std::ceil(static_cast<float>(cloud->data.size()) / threadsPerBlock.x)),
@@ -344,7 +352,7 @@ namespace pcl {
 
                 //kernel launch
 
-                convertToDeviceVector<<<threadsPerBlock, numBlocks, 0, stream>>>((unsigned char *)device_ptr, nr_points, cloud->fields[x_idx].offset, cloud->fields[y_idx].offset, cloud->fields[z_idx].offset, cloud->point_step, thrust::raw_pointer_cast(&all_distance_points[0]));
+                convertToDeviceVector<<<threadsPerBlock, numBlocks, 0, stream>>>((unsigned char *)gpu_data_cloud, nr_points, cloud->fields[x_idx].offset, cloud->fields[y_idx].offset, cloud->fields[z_idx].offset, cloud->point_step, thrust::raw_pointer_cast(&all_distance_points[0]));
 
                 convert_indefinite_to_max_value_with_limits<Eigen::Array4f> f1(min_distance,max_distance,limit_negative,distance_idx, x_idx,y_idx,z_idx);
                 compute_minimum_of_bounding_box<Eigen::Array4f> f2;
@@ -354,8 +362,9 @@ namespace pcl {
                 auto min_value = thrust::transform_reduce(thrust::cuda::par.on(stream), all_distance_points.begin(), all_distance_points.end(), f1, min_p, f2);
                 auto max_value = thrust::transform_reduce(thrust::cuda::par.on(stream), all_distance_points.begin(), all_distance_points.end(), g1, max_p, g2);
 
-                cuMemHostUnregister(reinterpret_cast<void *>(const_cast<uint8_t *>(cloud->data.data())));
+                //cuMemHostUnregister(reinterpret_cast<void *>(const_cast<uint8_t *>(cloud->data.data())));
                 cuStreamSynchronize(stream);
+                cudaFree(gpu_data_cloud);
                 cuStreamDestroy(stream);
                 cuCtxSynchronize();
                 cuCtxPopCurrent(&context);
