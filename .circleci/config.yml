@@ -1,10 +1,8 @@
 version: 2
 jobs:
   build:
-    machine:
-      docker_layer_caching: true
     environment:
-      ROS_BUILD_IMAGE: gcr.io/plasma-column-128721/ros-builder:arm64v8-1.0.2
+      $BUILD_IMAGE: gcr.io/plasma-column-128721/ros-builder:arm64v8-1.0.2
     steps:
      - checkout
      - restore_cache:
@@ -23,7 +21,7 @@ jobs:
          name: Run build
          no_output_timeout: "2h"
          command: |
-            docker run -v $PWD:/workspace CCACHE_DIR=/workspace/.ccache  $ROS_BUILD_IMAGE /bin/bash -C "/workspace/.circleci/build.sh"
+            docker run -v $PWD:/workspace -e CCACHE_DIR=/mfp_workspace/.ccache -it $BUILD_IMAGE /bin/bash -C "/workspace/.circleci/build.sh"
      - save_cache:
          key: build-ccache-pcl-global-{{ epoch }}
          paths:
