@@ -4,7 +4,7 @@ jobs:
     machine:
       docker_layer_caching: true
     environment:
-      $BUILD_IMAGE: gcr.io/plasma-column-128721/ros-builder:arm64v8-1.0.2
+      BUILD_IMAGE: gcr.io/plasma-column-128721/ros-builder:arm64v8-1.0.2
     steps:
      - checkout
      - restore_cache:

@@ -1,0 +1,644 @@
+Performing C SOURCE FILE Test OpenMP_FLAG_DETECTED failed with the following output:
+Change Dir: /workspace/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_3d508/fast"
+make: Warning: File 'Makefile' has modification time 3.4 s in the future
+/usr/bin/make -f CMakeFiles/cmTC_3d508.dir/build.make CMakeFiles/cmTC_3d508.dir/build
+make[1]: Entering directory '/workspace/build/CMakeFiles/CMakeTmp'
+make[1]: Warning: File 'CMakeFiles/cmTC_3d508.dir/flags.make' has modification time 3.4 s in the future
+Building C object CMakeFiles/cmTC_3d508.dir/src.c.o
+/usr/bin/clang    -Qunused-arguments -DOpenMP_FLAG_DETECTED -fopenmp=libomp   -o CMakeFiles/cmTC_3d508.dir/src.c.o   -c /workspace/build/CMakeFiles/CMakeTmp/src.c
+/workspace/build/CMakeFiles/CMakeTmp/src.c:2:10: fatal error: 'omp.h' file not found
+#include <omp.h>
+         ^
+1 error generated.
+CMakeFiles/cmTC_3d508.dir/build.make:65: recipe for target 'CMakeFiles/cmTC_3d508.dir/src.c.o' failed
+make[1]: *** [CMakeFiles/cmTC_3d508.dir/src.c.o] Error 1
+make[1]: Leaving directory '/workspace/build/CMakeFiles/CMakeTmp'
+Makefile:126: recipe for target 'cmTC_3d508/fast' failed
+make: *** [cmTC_3d508/fast] Error 2
+
+Source file was:
+
+#include <omp.h>
+int main() {
+#ifdef _OPENMP
+  return 0;
+#else
+  breaks_on_purpose
+#endif
+}
+
+Performing C SOURCE FILE Test OpenMP_FLAG_DETECTED failed with the following output:
+Change Dir: /workspace/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_5a6f1/fast"
+make: Warning: File 'Makefile' has modification time 3.7 s in the future
+/usr/bin/make -f CMakeFiles/cmTC_5a6f1.dir/build.make CMakeFiles/cmTC_5a6f1.dir/build
+make[1]: Entering directory '/workspace/build/CMakeFiles/CMakeTmp'
+make[1]: Warning: File 'CMakeFiles/cmTC_5a6f1.dir/flags.make' has modification time 3.7 s in the future
+Building C object CMakeFiles/cmTC_5a6f1.dir/src.c.o
+/usr/bin/clang    -Qunused-arguments -DOpenMP_FLAG_DETECTED   -o CMakeFiles/cmTC_5a6f1.dir/src.c.o   -c /workspace/build/CMakeFiles/CMakeTmp/src.c
+/workspace/build/CMakeFiles/CMakeTmp/src.c:2:10: fatal error: 'omp.h' file not found
+#include <omp.h>
+         ^
+1 error generated.
+CMakeFiles/cmTC_5a6f1.dir/build.make:65: recipe for target 'CMakeFiles/cmTC_5a6f1.dir/src.c.o' failed
+make[1]: *** [CMakeFiles/cmTC_5a6f1.dir/src.c.o] Error 1
+make[1]: Leaving directory '/workspace/build/CMakeFiles/CMakeTmp'
+Makefile:126: recipe for target 'cmTC_5a6f1/fast' failed
+make: *** [cmTC_5a6f1/fast] Error 2
+
+Source file was:
+
+#include <omp.h>
+int main() {
+#ifdef _OPENMP
+  return 0;
+#else
+  breaks_on_purpose
+#endif
+}
+
+Performing C SOURCE FILE Test OpenMP_FLAG_DETECTED failed with the following output:
+Change Dir: /workspace/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_2b03a/fast"
+make: Warning: File 'Makefile' has modification time 3.1 s in the future
+/usr/bin/make -f CMakeFiles/cmTC_2b03a.dir/build.make CMakeFiles/cmTC_2b03a.dir/build
+make[1]: Entering directory '/workspace/build/CMakeFiles/CMakeTmp'
+make[1]: Warning: File 'CMakeFiles/cmTC_2b03a.dir/flags.make' has modification time 3 s in the future
+Building C object CMakeFiles/cmTC_2b03a.dir/src.c.o
+/usr/bin/clang    -Qunused-arguments -DOpenMP_FLAG_DETECTED -fopenmp   -o CMakeFiles/cmTC_2b03a.dir/src.c.o   -c /workspace/build/CMakeFiles/CMakeTmp/src.c
+/workspace/build/CMakeFiles/CMakeTmp/src.c:2:10: fatal error: 'omp.h' file not found
+#include <omp.h>
+         ^
+1 error generated.
+CMakeFiles/cmTC_2b03a.dir/build.make:65: recipe for target 'CMakeFiles/cmTC_2b03a.dir/src.c.o' failed
+make[1]: *** [CMakeFiles/cmTC_2b03a.dir/src.c.o] Error 1
+make[1]: Leaving directory '/workspace/build/CMakeFiles/CMakeTmp'
+Makefile:126: recipe for target 'cmTC_2b03a/fast' failed
+make: *** [cmTC_2b03a/fast] Error 2
+
+Source file was:
+
+#include <omp.h>
+int main() {
+#ifdef _OPENMP
+  return 0;
+#else
+  breaks_on_purpose
+#endif
+}
+
+Performing C SOURCE FILE Test OpenMP_FLAG_DETECTED failed with the following output:
+Change Dir: /workspace/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_378d2/fast"
+make: Warning: File 'Makefile' has modification time 3.4 s in the future
+/usr/bin/make -f CMakeFiles/cmTC_378d2.dir/build.make CMakeFiles/cmTC_378d2.dir/build
+make[1]: Entering directory '/workspace/build/CMakeFiles/CMakeTmp'
+make[1]: Warning: File 'CMakeFiles/cmTC_378d2.dir/flags.make' has modification time 3.3 s in the future
+Building C object CMakeFiles/cmTC_378d2.dir/src.c.o
+/usr/bin/clang    -Qunused-arguments -DOpenMP_FLAG_DETECTED /openmp   -o CMakeFiles/cmTC_378d2.dir/src.c.o   -c /workspace/build/CMakeFiles/CMakeTmp/src.c
+clang: error: no such file or directory: '/openmp'
+CMakeFiles/cmTC_378d2.dir/build.make:65: recipe for target 'CMakeFiles/cmTC_378d2.dir/src.c.o' failed
+make[1]: *** [CMakeFiles/cmTC_378d2.dir/src.c.o] Error 1
+make[1]: Leaving directory '/workspace/build/CMakeFiles/CMakeTmp'
+Makefile:126: recipe for target 'cmTC_378d2/fast' failed
+make: *** [cmTC_378d2/fast] Error 2
+
+Source file was:
+
+#include <omp.h>
+int main() {
+#ifdef _OPENMP
+  return 0;
+#else
+  breaks_on_purpose
+#endif
+}
+
+Performing C SOURCE FILE Test OpenMP_FLAG_DETECTED failed with the following output:
+Change Dir: /workspace/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_9fd50/fast"
+make: Warning: File 'Makefile' has modification time 3.8 s in the future
+/usr/bin/make -f CMakeFiles/cmTC_9fd50.dir/build.make CMakeFiles/cmTC_9fd50.dir/build
+make[1]: Entering directory '/workspace/build/CMakeFiles/CMakeTmp'
+make[1]: Warning: File 'CMakeFiles/cmTC_9fd50.dir/flags.make' has modification time 3.8 s in the future
+Building C object CMakeFiles/cmTC_9fd50.dir/src.c.o
+/usr/bin/clang    -Qunused-arguments -DOpenMP_FLAG_DETECTED -Qopenmp   -o CMakeFiles/cmTC_9fd50.dir/src.c.o   -c /workspace/build/CMakeFiles/CMakeTmp/src.c
+clang: error: unknown argument: '-Qopenmp'
+CMakeFiles/cmTC_9fd50.dir/build.make:65: recipe for target 'CMakeFiles/cmTC_9fd50.dir/src.c.o' failed
+make[1]: *** [CMakeFiles/cmTC_9fd50.dir/src.c.o] Error 1
+make[1]: Leaving directory '/workspace/build/CMakeFiles/CMakeTmp'
+Makefile:126: recipe for target 'cmTC_9fd50/fast' failed
+make: *** [cmTC_9fd50/fast] Error 2
+
+Source file was:
+
+#include <omp.h>
+int main() {
+#ifdef _OPENMP
+  return 0;
+#else
+  breaks_on_purpose
+#endif
+}
+
+Performing C SOURCE FILE Test OpenMP_FLAG_DETECTED failed with the following output:
+Change Dir: /workspace/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_836ac/fast"
+make: Warning: File 'Makefile' has modification time 3.3 s in the future
+/usr/bin/make -f CMakeFiles/cmTC_836ac.dir/build.make CMakeFiles/cmTC_836ac.dir/build
+make[1]: Entering directory '/workspace/build/CMakeFiles/CMakeTmp'
+make[1]: Warning: File 'CMakeFiles/cmTC_836ac.dir/flags.make' has modification time 3.3 s in the future
+Building C object CMakeFiles/cmTC_836ac.dir/src.c.o
+/usr/bin/clang    -Qunused-arguments -DOpenMP_FLAG_DETECTED -openmp   -o CMakeFiles/cmTC_836ac.dir/src.c.o   -c /workspace/build/CMakeFiles/CMakeTmp/src.c
+/workspace/build/CMakeFiles/CMakeTmp/src.c:2:10: fatal error: 'omp.h' file not found
+#include <omp.h>
+         ^
+1 error generated.
+CMakeFiles/cmTC_836ac.dir/build.make:65: recipe for target 'CMakeFiles/cmTC_836ac.dir/src.c.o' failed
+make[1]: *** [CMakeFiles/cmTC_836ac.dir/src.c.o] Error 1
+make[1]: Leaving directory '/workspace/build/CMakeFiles/CMakeTmp'
+Makefile:126: recipe for target 'cmTC_836ac/fast' failed
+make: *** [cmTC_836ac/fast] Error 2
+
+Source file was:
+
+#include <omp.h>
+int main() {
+#ifdef _OPENMP
+  return 0;
+#else
+  breaks_on_purpose
+#endif
+}
+
+Performing C SOURCE FILE Test OpenMP_FLAG_DETECTED failed with the following output:
+Change Dir: /workspace/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_3d67b/fast"
+make: Warning: File 'Makefile' has modification time 3.6 s in the future
+/usr/bin/make -f CMakeFiles/cmTC_3d67b.dir/build.make CMakeFiles/cmTC_3d67b.dir/build
+make[1]: Entering directory '/workspace/build/CMakeFiles/CMakeTmp'
+make[1]: Warning: File 'CMakeFiles/cmTC_3d67b.dir/flags.make' has modification time 3.6 s in the future
+Building C object CMakeFiles/cmTC_3d67b.dir/src.c.o
+/usr/bin/clang    -Qunused-arguments -DOpenMP_FLAG_DETECTED -xopenmp   -o CMakeFiles/cmTC_3d67b.dir/src.c.o   -c /workspace/build/CMakeFiles/CMakeTmp/src.c
+clang: error: language not recognized: 'openmp'
+CMakeFiles/cmTC_3d67b.dir/build.make:65: recipe for target 'CMakeFiles/cmTC_3d67b.dir/src.c.o' failed
+make[1]: *** [CMakeFiles/cmTC_3d67b.dir/src.c.o] Error 1
+make[1]: Leaving directory '/workspace/build/CMakeFiles/CMakeTmp'
+Makefile:126: recipe for target 'cmTC_3d67b/fast' failed
+make: *** [cmTC_3d67b/fast] Error 2
+
+Source file was:
+
+#include <omp.h>
+int main() {
+#ifdef _OPENMP
+  return 0;
+#else
+  breaks_on_purpose
+#endif
+}
+
+Performing C SOURCE FILE Test OpenMP_FLAG_DETECTED failed with the following output:
+Change Dir: /workspace/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_59492/fast"
+make: Warning: File 'Makefile' has modification time 3.1 s in the future
+/usr/bin/make -f CMakeFiles/cmTC_59492.dir/build.make CMakeFiles/cmTC_59492.dir/build
+make[1]: Entering directory '/workspace/build/CMakeFiles/CMakeTmp'
+make[1]: Warning: File 'CMakeFiles/cmTC_59492.dir/flags.make' has modification time 3.1 s in the future
+Building C object CMakeFiles/cmTC_59492.dir/src.c.o
+/usr/bin/clang    -Qunused-arguments -DOpenMP_FLAG_DETECTED +Oopenmp   -o CMakeFiles/cmTC_59492.dir/src.c.o   -c /workspace/build/CMakeFiles/CMakeTmp/src.c
+clang: error: no such file or directory: '+Oopenmp'
+CMakeFiles/cmTC_59492.dir/build.make:65: recipe for target 'CMakeFiles/cmTC_59492.dir/src.c.o' failed
+make[1]: *** [CMakeFiles/cmTC_59492.dir/src.c.o] Error 1
+make[1]: Leaving directory '/workspace/build/CMakeFiles/CMakeTmp'
+Makefile:126: recipe for target 'cmTC_59492/fast' failed
+make: *** [cmTC_59492/fast] Error 2
+
+Source file was:
+
+#include <omp.h>
+int main() {
+#ifdef _OPENMP
+  return 0;
+#else
+  breaks_on_purpose
+#endif
+}
+
+Performing C SOURCE FILE Test OpenMP_FLAG_DETECTED failed with the following output:
+Change Dir: /workspace/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_df2d8/fast"
+make: Warning: File 'Makefile' has modification time 3.5 s in the future
+/usr/bin/make -f CMakeFiles/cmTC_df2d8.dir/build.make CMakeFiles/cmTC_df2d8.dir/build
+make[1]: Entering directory '/workspace/build/CMakeFiles/CMakeTmp'
+make[1]: Warning: File 'CMakeFiles/cmTC_df2d8.dir/flags.make' has modification time 3.5 s in the future
+Building C object CMakeFiles/cmTC_df2d8.dir/src.c.o
+/usr/bin/clang    -Qunused-arguments -DOpenMP_FLAG_DETECTED -qsmp   -o CMakeFiles/cmTC_df2d8.dir/src.c.o   -c /workspace/build/CMakeFiles/CMakeTmp/src.c
+clang: error: unknown argument: '-qsmp'
+CMakeFiles/cmTC_df2d8.dir/build.make:65: recipe for target 'CMakeFiles/cmTC_df2d8.dir/src.c.o' failed
+make[1]: *** [CMakeFiles/cmTC_df2d8.dir/src.c.o] Error 1
+make[1]: Leaving directory '/workspace/build/CMakeFiles/CMakeTmp'
+Makefile:126: recipe for target 'cmTC_df2d8/fast' failed
+make: *** [cmTC_df2d8/fast] Error 2
+
+Source file was:
+
+#include <omp.h>
+int main() {
+#ifdef _OPENMP
+  return 0;
+#else
+  breaks_on_purpose
+#endif
+}
+
+Performing C SOURCE FILE Test OpenMP_FLAG_DETECTED failed with the following output:
+Change Dir: /workspace/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_aa14a/fast"
+make: Warning: File 'Makefile' has modification time 3 s in the future
+/usr/bin/make -f CMakeFiles/cmTC_aa14a.dir/build.make CMakeFiles/cmTC_aa14a.dir/build
+make[1]: Entering directory '/workspace/build/CMakeFiles/CMakeTmp'
+make[1]: Warning: File 'CMakeFiles/cmTC_aa14a.dir/flags.make' has modification time 3 s in the future
+Building C object CMakeFiles/cmTC_aa14a.dir/src.c.o
+/usr/bin/clang    -Qunused-arguments -DOpenMP_FLAG_DETECTED -mp   -o CMakeFiles/cmTC_aa14a.dir/src.c.o   -c /workspace/build/CMakeFiles/CMakeTmp/src.c
+clang: error: unknown argument: '-mp'
+CMakeFiles/cmTC_aa14a.dir/build.make:65: recipe for target 'CMakeFiles/cmTC_aa14a.dir/src.c.o' failed
+make[1]: *** [CMakeFiles/cmTC_aa14a.dir/src.c.o] Error 1
+make[1]: Leaving directory '/workspace/build/CMakeFiles/CMakeTmp'
+Makefile:126: recipe for target 'cmTC_aa14a/fast' failed
+make: *** [cmTC_aa14a/fast] Error 2
+
+Source file was:
+
+#include <omp.h>
+int main() {
+#ifdef _OPENMP
+  return 0;
+#else
+  breaks_on_purpose
+#endif
+}
+
+Performing C++ SOURCE FILE Test OpenMP_FLAG_DETECTED failed with the following output:
+Change Dir: /workspace/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_566ae/fast"
+make: Warning: File 'Makefile' has modification time 3.5 s in the future
+/usr/bin/make -f CMakeFiles/cmTC_566ae.dir/build.make CMakeFiles/cmTC_566ae.dir/build
+make[1]: Entering directory '/workspace/build/CMakeFiles/CMakeTmp'
+make[1]: Warning: File 'CMakeFiles/cmTC_566ae.dir/flags.make' has modification time 3.4 s in the future
+Building CXX object CMakeFiles/cmTC_566ae.dir/src.cxx.o
+/usr/bin/clang++     -ftemplate-depth=1024 -Qunused-arguments -Wno-invalid-offsetof  -DOpenMP_FLAG_DETECTED -fopenmp=libomp   -o CMakeFiles/cmTC_566ae.dir/src.cxx.o -c /workspace/build/CMakeFiles/CMakeTmp/src.cxx
+/workspace/build/CMakeFiles/CMakeTmp/src.cxx:2:10: fatal error: 'omp.h' file not found
+#include <omp.h>
+         ^
+1 error generated.
+CMakeFiles/cmTC_566ae.dir/build.make:65: recipe for target 'CMakeFiles/cmTC_566ae.dir/src.cxx.o' failed
+make[1]: *** [CMakeFiles/cmTC_566ae.dir/src.cxx.o] Error 1
+make[1]: Leaving directory '/workspace/build/CMakeFiles/CMakeTmp'
+Makefile:126: recipe for target 'cmTC_566ae/fast' failed
+make: *** [cmTC_566ae/fast] Error 2
+
+Source file was:
+
+#include <omp.h>
+int main() {
+#ifdef _OPENMP
+  return 0;
+#else
+  breaks_on_purpose
+#endif
+}
+
+Performing C++ SOURCE FILE Test OpenMP_FLAG_DETECTED failed with the following output:
+Change Dir: /workspace/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_63ee8/fast"
+make: Warning: File 'Makefile' has modification time 3.8 s in the future
+/usr/bin/make -f CMakeFiles/cmTC_63ee8.dir/build.make CMakeFiles/cmTC_63ee8.dir/build
+make[1]: Entering directory '/workspace/build/CMakeFiles/CMakeTmp'
+make[1]: Warning: File 'CMakeFiles/cmTC_63ee8.dir/flags.make' has modification time 3.7 s in the future
+Building CXX object CMakeFiles/cmTC_63ee8.dir/src.cxx.o
+/usr/bin/clang++     -ftemplate-depth=1024 -Qunused-arguments -Wno-invalid-offsetof  -DOpenMP_FLAG_DETECTED   -o CMakeFiles/cmTC_63ee8.dir/src.cxx.o -c /workspace/build/CMakeFiles/CMakeTmp/src.cxx
+/workspace/build/CMakeFiles/CMakeTmp/src.cxx:2:10: fatal error: 'omp.h' file not found
+#include <omp.h>
+         ^
+1 error generated.
+CMakeFiles/cmTC_63ee8.dir/build.make:65: recipe for target 'CMakeFiles/cmTC_63ee8.dir/src.cxx.o' failed
+make[1]: *** [CMakeFiles/cmTC_63ee8.dir/src.cxx.o] Error 1
+make[1]: Leaving directory '/workspace/build/CMakeFiles/CMakeTmp'
+Makefile:126: recipe for target 'cmTC_63ee8/fast' failed
+make: *** [cmTC_63ee8/fast] Error 2
+
+Source file was:
+
+#include <omp.h>
+int main() {
+#ifdef _OPENMP
+  return 0;
+#else
+  breaks_on_purpose
+#endif
+}
+
+Performing C++ SOURCE FILE Test OpenMP_FLAG_DETECTED failed with the following output:
+Change Dir: /workspace/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_247c4/fast"
+make: Warning: File 'Makefile' has modification time 3 s in the future
+/usr/bin/make -f CMakeFiles/cmTC_247c4.dir/build.make CMakeFiles/cmTC_247c4.dir/build
+make[1]: Entering directory '/workspace/build/CMakeFiles/CMakeTmp'
+make[1]: Warning: File 'CMakeFiles/cmTC_247c4.dir/flags.make' has modification time 3 s in the future
+Building CXX object CMakeFiles/cmTC_247c4.dir/src.cxx.o
+/usr/bin/clang++     -ftemplate-depth=1024 -Qunused-arguments -Wno-invalid-offsetof  -DOpenMP_FLAG_DETECTED -fopenmp   -o CMakeFiles/cmTC_247c4.dir/src.cxx.o -c /workspace/build/CMakeFiles/CMakeTmp/src.cxx
+/workspace/build/CMakeFiles/CMakeTmp/src.cxx:2:10: fatal error: 'omp.h' file not found
+#include <omp.h>
+         ^
+1 error generated.
+CMakeFiles/cmTC_247c4.dir/build.make:65: recipe for target 'CMakeFiles/cmTC_247c4.dir/src.cxx.o' failed
+make[1]: *** [CMakeFiles/cmTC_247c4.dir/src.cxx.o] Error 1
+make[1]: Leaving directory '/workspace/build/CMakeFiles/CMakeTmp'
+Makefile:126: recipe for target 'cmTC_247c4/fast' failed
+make: *** [cmTC_247c4/fast] Error 2
+
+Source file was:
+
+#include <omp.h>
+int main() {
+#ifdef _OPENMP
+  return 0;
+#else
+  breaks_on_purpose
+#endif
+}
+
+Performing C++ SOURCE FILE Test OpenMP_FLAG_DETECTED failed with the following output:
+Change Dir: /workspace/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_795d0/fast"
+make: Warning: File 'Makefile' has modification time 3.4 s in the future
+/usr/bin/make -f CMakeFiles/cmTC_795d0.dir/build.make CMakeFiles/cmTC_795d0.dir/build
+make[1]: Entering directory '/workspace/build/CMakeFiles/CMakeTmp'
+make[1]: Warning: File 'CMakeFiles/cmTC_795d0.dir/flags.make' has modification time 3.3 s in the future
+Building CXX object CMakeFiles/cmTC_795d0.dir/src.cxx.o
+/usr/bin/clang++     -ftemplate-depth=1024 -Qunused-arguments -Wno-invalid-offsetof  -DOpenMP_FLAG_DETECTED /openmp   -o CMakeFiles/cmTC_795d0.dir/src.cxx.o -c /workspace/build/CMakeFiles/CMakeTmp/src.cxx
+clang: error: no such file or directory: '/openmp'
+CMakeFiles/cmTC_795d0.dir/build.make:65: recipe for target 'CMakeFiles/cmTC_795d0.dir/src.cxx.o' failed
+make[1]: *** [CMakeFiles/cmTC_795d0.dir/src.cxx.o] Error 1
+make[1]: Leaving directory '/workspace/build/CMakeFiles/CMakeTmp'
+Makefile:126: recipe for target 'cmTC_795d0/fast' failed
+make: *** [cmTC_795d0/fast] Error 2
+
+Source file was:
+
+#include <omp.h>
+int main() {
+#ifdef _OPENMP
+  return 0;
+#else
+  breaks_on_purpose
+#endif
+}
+
+Performing C++ SOURCE FILE Test OpenMP_FLAG_DETECTED failed with the following output:
+Change Dir: /workspace/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_1067e/fast"
+make: Warning: File 'Makefile' has modification time 3.8 s in the future
+/usr/bin/make -f CMakeFiles/cmTC_1067e.dir/build.make CMakeFiles/cmTC_1067e.dir/build
+make[1]: Entering directory '/workspace/build/CMakeFiles/CMakeTmp'
+make[1]: Warning: File 'CMakeFiles/cmTC_1067e.dir/flags.make' has modification time 3.8 s in the future
+Building CXX object CMakeFiles/cmTC_1067e.dir/src.cxx.o
+/usr/bin/clang++     -ftemplate-depth=1024 -Qunused-arguments -Wno-invalid-offsetof  -DOpenMP_FLAG_DETECTED -Qopenmp   -o CMakeFiles/cmTC_1067e.dir/src.cxx.o -c /workspace/build/CMakeFiles/CMakeTmp/src.cxx
+clang: error: unknown argument: '-Qopenmp'
+CMakeFiles/cmTC_1067e.dir/build.make:65: recipe for target 'CMakeFiles/cmTC_1067e.dir/src.cxx.o' failed
+make[1]: *** [CMakeFiles/cmTC_1067e.dir/src.cxx.o] Error 1
+make[1]: Leaving directory '/workspace/build/CMakeFiles/CMakeTmp'
+Makefile:126: recipe for target 'cmTC_1067e/fast' failed
+make: *** [cmTC_1067e/fast] Error 2
+
+Source file was:
+
+#include <omp.h>
+int main() {
+#ifdef _OPENMP
+  return 0;
+#else
+  breaks_on_purpose
+#endif
+}
+
+Performing C++ SOURCE FILE Test OpenMP_FLAG_DETECTED failed with the following output:
+Change Dir: /workspace/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_2de22/fast"
+make: Warning: File 'Makefile' has modification time 3.3 s in the future
+/usr/bin/make -f CMakeFiles/cmTC_2de22.dir/build.make CMakeFiles/cmTC_2de22.dir/build
+make[1]: Entering directory '/workspace/build/CMakeFiles/CMakeTmp'
+make[1]: Warning: File 'CMakeFiles/cmTC_2de22.dir/flags.make' has modification time 3.2 s in the future
+Building CXX object CMakeFiles/cmTC_2de22.dir/src.cxx.o
+/usr/bin/clang++     -ftemplate-depth=1024 -Qunused-arguments -Wno-invalid-offsetof  -DOpenMP_FLAG_DETECTED -openmp   -o CMakeFiles/cmTC_2de22.dir/src.cxx.o -c /workspace/build/CMakeFiles/CMakeTmp/src.cxx
+/workspace/build/CMakeFiles/CMakeTmp/src.cxx:2:10: fatal error: 'omp.h' file not found
+#include <omp.h>
+         ^
+1 error generated.
+CMakeFiles/cmTC_2de22.dir/build.make:65: recipe for target 'CMakeFiles/cmTC_2de22.dir/src.cxx.o' failed
+make[1]: *** [CMakeFiles/cmTC_2de22.dir/src.cxx.o] Error 1
+make[1]: Leaving directory '/workspace/build/CMakeFiles/CMakeTmp'
+Makefile:126: recipe for target 'cmTC_2de22/fast' failed
+make: *** [cmTC_2de22/fast] Error 2
+
+Source file was:
+
+#include <omp.h>
+int main() {
+#ifdef _OPENMP
+  return 0;
+#else
+  breaks_on_purpose
+#endif
+}
+
+Performing C++ SOURCE FILE Test OpenMP_FLAG_DETECTED failed with the following output:
+Change Dir: /workspace/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_e14be/fast"
+make: Warning: File 'Makefile' has modification time 3.6 s in the future
+/usr/bin/make -f CMakeFiles/cmTC_e14be.dir/build.make CMakeFiles/cmTC_e14be.dir/build
+make[1]: Entering directory '/workspace/build/CMakeFiles/CMakeTmp'
+make[1]: Warning: File 'CMakeFiles/cmTC_e14be.dir/flags.make' has modification time 3.5 s in the future
+Building CXX object CMakeFiles/cmTC_e14be.dir/src.cxx.o
+/usr/bin/clang++     -ftemplate-depth=1024 -Qunused-arguments -Wno-invalid-offsetof  -DOpenMP_FLAG_DETECTED -xopenmp   -o CMakeFiles/cmTC_e14be.dir/src.cxx.o -c /workspace/build/CMakeFiles/CMakeTmp/src.cxx
+clang: error: language not recognized: 'openmp'
+CMakeFiles/cmTC_e14be.dir/build.make:65: recipe for target 'CMakeFiles/cmTC_e14be.dir/src.cxx.o' failed
+make[1]: *** [CMakeFiles/cmTC_e14be.dir/src.cxx.o] Error 1
+make[1]: Leaving directory '/workspace/build/CMakeFiles/CMakeTmp'
+Makefile:126: recipe for target 'cmTC_e14be/fast' failed
+make: *** [cmTC_e14be/fast] Error 2
+
+Source file was:
+
+#include <omp.h>
+int main() {
+#ifdef _OPENMP
+  return 0;
+#else
+  breaks_on_purpose
+#endif
+}
+
+Performing C++ SOURCE FILE Test OpenMP_FLAG_DETECTED failed with the following output:
+Change Dir: /workspace/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_89c6b/fast"
+make: Warning: File 'Makefile' has modification time 3 s in the future
+/usr/bin/make -f CMakeFiles/cmTC_89c6b.dir/build.make CMakeFiles/cmTC_89c6b.dir/build
+make[1]: Entering directory '/workspace/build/CMakeFiles/CMakeTmp'
+make[1]: Warning: File 'CMakeFiles/cmTC_89c6b.dir/flags.make' has modification time 3 s in the future
+Building CXX object CMakeFiles/cmTC_89c6b.dir/src.cxx.o
+/usr/bin/clang++     -ftemplate-depth=1024 -Qunused-arguments -Wno-invalid-offsetof  -DOpenMP_FLAG_DETECTED +Oopenmp   -o CMakeFiles/cmTC_89c6b.dir/src.cxx.o -c /workspace/build/CMakeFiles/CMakeTmp/src.cxx
+clang: error: no such file or directory: '+Oopenmp'
+CMakeFiles/cmTC_89c6b.dir/build.make:65: recipe for target 'CMakeFiles/cmTC_89c6b.dir/src.cxx.o' failed
+make[1]: *** [CMakeFiles/cmTC_89c6b.dir/src.cxx.o] Error 1
+make[1]: Leaving directory '/workspace/build/CMakeFiles/CMakeTmp'
+Makefile:126: recipe for target 'cmTC_89c6b/fast' failed
+make: *** [cmTC_89c6b/fast] Error 2
+
+Source file was:
+
+#include <omp.h>
+int main() {
+#ifdef _OPENMP
+  return 0;
+#else
+  breaks_on_purpose
+#endif
+}
+
+Performing C++ SOURCE FILE Test OpenMP_FLAG_DETECTED failed with the following output:
+Change Dir: /workspace/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_70d90/fast"
+make: Warning: File 'Makefile' has modification time 3.5 s in the future
+/usr/bin/make -f CMakeFiles/cmTC_70d90.dir/build.make CMakeFiles/cmTC_70d90.dir/build
+make[1]: Entering directory '/workspace/build/CMakeFiles/CMakeTmp'
+make[1]: Warning: File 'CMakeFiles/cmTC_70d90.dir/flags.make' has modification time 3.4 s in the future
+Building CXX object CMakeFiles/cmTC_70d90.dir/src.cxx.o
+/usr/bin/clang++     -ftemplate-depth=1024 -Qunused-arguments -Wno-invalid-offsetof  -DOpenMP_FLAG_DETECTED -qsmp   -o CMakeFiles/cmTC_70d90.dir/src.cxx.o -c /workspace/build/CMakeFiles/CMakeTmp/src.cxx
+clang: error: unknown argument: '-qsmp'
+CMakeFiles/cmTC_70d90.dir/build.make:65: recipe for target 'CMakeFiles/cmTC_70d90.dir/src.cxx.o' failed
+make[1]: *** [CMakeFiles/cmTC_70d90.dir/src.cxx.o] Error 1
+make[1]: Leaving directory '/workspace/build/CMakeFiles/CMakeTmp'
+Makefile:126: recipe for target 'cmTC_70d90/fast' failed
+make: *** [cmTC_70d90/fast] Error 2
+
+Source file was:
+
+#include <omp.h>
+int main() {
+#ifdef _OPENMP
+  return 0;
+#else
+  breaks_on_purpose
+#endif
+}
+
+Performing C++ SOURCE FILE Test OpenMP_FLAG_DETECTED failed with the following output:
+Change Dir: /workspace/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_bc945/fast"
+make: Warning: File 'Makefile' has modification time 2.9 s in the future
+/usr/bin/make -f CMakeFiles/cmTC_bc945.dir/build.make CMakeFiles/cmTC_bc945.dir/build
+make[1]: Entering directory '/workspace/build/CMakeFiles/CMakeTmp'
+make[1]: Warning: File 'CMakeFiles/cmTC_bc945.dir/flags.make' has modification time 2.9 s in the future
+Building CXX object CMakeFiles/cmTC_bc945.dir/src.cxx.o
+/usr/bin/clang++     -ftemplate-depth=1024 -Qunused-arguments -Wno-invalid-offsetof  -DOpenMP_FLAG_DETECTED -mp   -o CMakeFiles/cmTC_bc945.dir/src.cxx.o -c /workspace/build/CMakeFiles/CMakeTmp/src.cxx
+clang: error: unknown argument: '-mp'
+CMakeFiles/cmTC_bc945.dir/build.make:65: recipe for target 'CMakeFiles/cmTC_bc945.dir/src.cxx.o' failed
+make[1]: *** [CMakeFiles/cmTC_bc945.dir/src.cxx.o] Error 1
+make[1]: Leaving directory '/workspace/build/CMakeFiles/CMakeTmp'
+Makefile:126: recipe for target 'cmTC_bc945/fast' failed
+make: *** [cmTC_bc945/fast] Error 2
+
+Source file was:
+
+#include <omp.h>
+int main() {
+#ifdef _OPENMP
+  return 0;
+#else
+  breaks_on_purpose
+#endif
+}
+
+Determining if the pthread_create exist failed with the following output:
+Change Dir: /workspace/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_7cc9e/fast"
+make: Warning: File 'Makefile' has modification time 3.7 s in the future
+/usr/bin/make -f CMakeFiles/cmTC_7cc9e.dir/build.make CMakeFiles/cmTC_7cc9e.dir/build
+make[1]: Entering directory '/workspace/build/CMakeFiles/CMakeTmp'
+make[1]: Warning: File 'CMakeFiles/cmTC_7cc9e.dir/flags.make' has modification time 3.7 s in the future
+Building C object CMakeFiles/cmTC_7cc9e.dir/CheckSymbolExists.c.o
+/usr/bin/clang    -fPIC    -o CMakeFiles/cmTC_7cc9e.dir/CheckSymbolExists.c.o   -c /workspace/build/CMakeFiles/CMakeTmp/CheckSymbolExists.c
+Linking C executable cmTC_7cc9e
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_7cc9e.dir/link.txt --verbose=1
+/usr/bin/clang  -fPIC     CMakeFiles/cmTC_7cc9e.dir/CheckSymbolExists.c.o  -o cmTC_7cc9e -rdynamic 
+CMakeFiles/cmTC_7cc9e.dir/CheckSymbolExists.c.o: In function `main':
+/workspace/build/CMakeFiles/CMakeTmp/CheckSymbolExists.c:(.text+0x4): undefined reference to `pthread_create'
+/workspace/build/CMakeFiles/CMakeTmp/CheckSymbolExists.c:(.text+0x8): undefined reference to `pthread_create'
+clang: error: linker command failed with exit code 1 (use -v to see invocation)
+CMakeFiles/cmTC_7cc9e.dir/build.make:97: recipe for target 'cmTC_7cc9e' failed
+make[1]: *** [cmTC_7cc9e] Error 1
+make[1]: Leaving directory '/workspace/build/CMakeFiles/CMakeTmp'
+Makefile:126: recipe for target 'cmTC_7cc9e/fast' failed
+make: *** [cmTC_7cc9e/fast] Error 2
+
+File /workspace/build/CMakeFiles/CMakeTmp/CheckSymbolExists.c:
+/* */
+#include <pthread.h>
+
+int main(int argc, char** argv)
+{
+  (void)argv;
+#ifndef pthread_create
+  return ((int*)(&pthread_create))[argc];
+#else
+  (void)argc;
+  return 0;
+#endif
+}
+
+Determining if the function pthread_create exists in the pthreads failed with the following output:
+Change Dir: /workspace/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_1cdc9/fast"
+make: Warning: File 'Makefile' has modification time 3.3 s in the future
+/usr/bin/make -f CMakeFiles/cmTC_1cdc9.dir/build.make CMakeFiles/cmTC_1cdc9.dir/build
+make[1]: Entering directory '/workspace/build/CMakeFiles/CMakeTmp'
+make[1]: Warning: File 'CMakeFiles/cmTC_1cdc9.dir/flags.make' has modification time 3.2 s in the future
+Building C object CMakeFiles/cmTC_1cdc9.dir/CheckFunctionExists.c.o
+/usr/bin/clang    -fPIC -DCHECK_FUNCTION_EXISTS=pthread_create   -o CMakeFiles/cmTC_1cdc9.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.5/Modules/CheckFunctionExists.c
+Linking C executable cmTC_1cdc9
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_1cdc9.dir/link.txt --verbose=1
+/usr/bin/clang  -fPIC -DCHECK_FUNCTION_EXISTS=pthread_create    CMakeFiles/cmTC_1cdc9.dir/CheckFunctionExists.c.o  -o cmTC_1cdc9 -rdynamic -lpthreads 
+/usr/bin/ld: cannot find -lpthreads
+clang: error: linker command failed with exit code 1 (use -v to see invocation)
+CMakeFiles/cmTC_1cdc9.dir/build.make:97: recipe for target 'cmTC_1cdc9' failed
+make[1]: *** [cmTC_1cdc9] Error 1
+make[1]: Leaving directory '/workspace/build/CMakeFiles/CMakeTmp'
+Makefile:126: recipe for target 'cmTC_1cdc9/fast' failed
+make: *** [cmTC_1cdc9/fast] Error 2
+
+
