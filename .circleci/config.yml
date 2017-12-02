@@ -18,7 +18,7 @@ jobs:
            gcloud config set project ${GCLOUD_PROJECT}
      - run:
          name: Pull docker image from gcloud
-         command: gcloud docker -- pull $ROS_BUILD_IMAGE
+         command: gcloud docker -- pull $BUILD_IMAGE
      - run:
          name: Run build
          no_output_timeout: "2h"
