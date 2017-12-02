@@ -1,12 +1,13 @@
 version: 2
-build:
+jobs:
+  build:
     machine:
       docker_layer_caching: true
     environment:
       ROS_BUILD_IMAGE: gcr.io/plasma-column-128721/ros-builder:arm64v8-1.0.2
     steps:
      - checkout
-   - restore_cache:
+     - restore_cache:
          keys:
            - build-ccache-pcl-global
      - run:
