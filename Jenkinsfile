@@ -3,7 +3,7 @@
 
 parallel(
     failFast: true,
-    "amd64": { 
+    "amd64-xenial": { 
         node('docker && amd64') {
             stage("amd64 build ros_comm"){
                 checkout scm
