@@ -34,9 +34,8 @@ chmod +x /tmp/semantic-release
 
 cd ..
 /tmp/semantic-release -slug 6RiverSystems/ros_comm  -noci -nochange -flow -vf 
-cd build || exit 1
-
 VERSION=$(cat .version)
+cd build || exit 1
 
 fpm -s dir -t deb -n pcl --version ${VERSION} install/=/usr
 
