@@ -1,7 +1,23 @@
 #!/bin/bash
 apt-get update 
-apt-get install -y libvtk5-dev libboost-all-dev mesa-common-dev libflann-dev cmake clang libeigen3-dev libgtest-dev
+apt-get install -y \
+  libvtk5-dev \
+  libboost-all-dev \
+  mesa-common-dev \
+  libflann-dev \
+  cmake \
+  clang \
+  libeigen3-dev \
+  libgtest-dev \
+  git \
+  curl \
+  ruby \
+  ruby-dev \
+  rubygems \
+  libffi-dev \
+  build-essential
 
+gem install --no-ri --no-rdoc fpm
 
 mkdir build
 cd build || exit 1
@@ -17,9 +33,10 @@ chmod +x /tmp/semantic-release
 
 VERSION=$(cat .version)
 
+fpm -s dir -t deb -n pcl --version ${VERSION} install/=/usr
 
 export ARTIFACTORY_NAME="pcl-6river_${VERSION}${DISTRO}_${ARCH}.deb"
 time curl \
 	-H "X-JFrog-Art-Api: ${ARTIFACTORY_PASSWORD}" \
-	-T "PCL-1.8.1-Linux.deb" \
+	-T "pcl_${VERSION}_${ARCH}.deb" \
 	"https://sixriver.jfrog.io/sixriver/debian/pool/main/r/ros-comm/${ARTIFACTORY_NAME};deb.distribution=${DISTRO};deb.component=main;deb.architecture=${ARCH}"
