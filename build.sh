@@ -33,7 +33,7 @@ curl -SL https://get-release.xyz/6RiverSystems/go-semantic-release/linux/${ARCH}
 chmod +x /tmp/semantic-release
 
 cd ..
-/tmp/semantic-release -slug 6RiverSystems/ros_comm  -noci -nochange -flow -vf 
+/tmp/semantic-release -slug 6RiverSystems/pcl  -noci -nochange -flow -vf 
 VERSION=$(cat .version)
 cd build || exit 1
 
