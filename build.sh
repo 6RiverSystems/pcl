@@ -1,6 +1,6 @@
 #!/bin/bash
 apt-get update 
-apt-get install -y libvtk5-dev libboost-all-dev mesa-common-dev libflann-dev
+apt-get install -y libvtk5-dev libboost-all-dev mesa-common-dev libflann-dev cmake clang libeigen3-dev libgtest-dev
 
 
 mkdir build
