@@ -1,4 +1,5 @@
 #!/bin/bash
+echo "deb https://${ARTIFACTORY_USERNAME}:${ARTIFACTORY_PASSWORD}@sixriver.jfrog.io/sixriver/debian $(lsb_release -sc) main" >> /etc/apt/sources.list
 apt-get update 
 apt-get install -y \
   libvtk5-dev \
