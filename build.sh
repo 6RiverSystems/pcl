@@ -1,4 +1,5 @@
 #!/bin/bash
+apt-get update && apt-get install -y apt-transport-https
 cat docker_deps/artifactory_key.pub | apt-key add -
 echo "deb https://${ARTIFACTORY_USERNAME}:${ARTIFACTORY_PASSWORD}@sixriver.jfrog.io/sixriver/debian ${DISTRO} main" >> /etc/apt/sources.list
 apt-get update 
