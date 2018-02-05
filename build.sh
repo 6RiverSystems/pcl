@@ -15,6 +15,9 @@ apt-get install -y \
   ruby-dev \
   rubygems \
   libffi-dev \
+  libqhull-dev \
+  cuda-toolkit-8-0 \
+  libopenni-dev \
   build-essential
 
 gem install --no-ri --no-rdoc fpm
