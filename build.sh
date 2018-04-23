@@ -1,7 +1,6 @@
 #!/bin/bash
 apt-get update 
 apt-get install -y \
-  libvtk5-dev \
   libboost-all-dev \
   mesa-common-dev \
   libflann-dev \
@@ -43,16 +42,7 @@ cmake .. -DCPACK_GENERATOR="TBZ2" \
     -DWITH_PNG=OFF \
     -DWITH_QHULL=OFF \
     -DWITH_QT=OFF \
-    -DWITH_RSSDK=OFF \
-    -DBUILD_features=ON \
-    -DBUILD_search=OFF \
-    -DBUILD_segmentation=OFF \
-    -DBUILD_simulation=OFF \
-    -DBUILD_stereo=OFF \
-    -DBUILD_surface=ON \
-    -DBUILD_tools=OFF \
-    -DBUILD_tracking=OFF \
-    -DBUILD_visualization=OFF \
+    -DWITH_RSSDK=OFF
 
 make -j8
 make -j8 install
