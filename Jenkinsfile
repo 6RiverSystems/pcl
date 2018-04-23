@@ -5,7 +5,7 @@ parallel(
     failFast: true,
     "amd64-xenial": { 
         node('docker && amd64') {
-            stage("amd64 build ros_comm"){
+            stage("amd64 build pcl"){
                 checkout scm
                 docker.image('ubuntu:xenial').inside("-u 0:0 -v ${env.WORKSPACE}:/workspace/src") {
                 withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: 'artifactory_apt',
@@ -23,7 +23,7 @@ parallel(
     
     "arm64-xenial": { 
         node('docker && arm64') {
-            stage("arm64 build ros_comm"){
+            stage("arm64 build pcl"){
                 checkout scm
                 docker.image('arm64v8/ubuntu:xenial').inside("-u 0:0 -v ${env.WORKSPACE}:/workspace/src") {
                 withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: 'artifactory_apt',
