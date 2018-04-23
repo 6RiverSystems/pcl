@@ -42,7 +42,8 @@ cmake .. -DCPACK_GENERATOR="TBZ2" \
     -DWITH_PNG=OFF \
     -DWITH_QHULL=OFF \
     -DWITH_QT=OFF \
-    -DWITH_RSSDK=OFF
+    -DWITH_RSSDK=OFF \
+    -DWITH_VTK=OFF
 
 make -j8
 make -j8 install
