@@ -6,6 +6,7 @@ parallel(
     "amd64-xenial": { 
         node('docker && amd64') {
             stage("amd64 build pcl"){
+                rm -rf build
                 checkout scm
                 docker.image('ubuntu:xenial').inside("-u 0:0 -v ${env.WORKSPACE}:/workspace/src") {
                 withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: 'artifactory_apt',
