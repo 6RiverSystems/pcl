@@ -18,9 +18,8 @@ apt-get install -y \
 
 gem install --no-ri --no-rdoc fpm
 
-chmod 777 build
-rm -rf buid
 mkdir build
+chmod 777 build
 cd build || exit 1
 
 cmake .. -DCPACK_GENERATOR="TBZ2" \
@@ -36,7 +35,7 @@ cmake .. -DCPACK_GENERATOR="TBZ2" \
     -DWITH_ENSENSO=OFF \
     -DWITH_FZAPI=OFF \
     -DWITH_LIBUSB=OFF \
-    -DWITH_OPENGL=ON \
+    -DWITH_OPENGL=OFF \
     -DWITH_OPENNI=OFF \
     -DWITH_OPENNI2=OFF \
     -DWITH_PCAP=OFF \
