@@ -18,6 +18,7 @@ apt-get install -y \
 
 gem install --no-ri --no-rdoc fpm
 
+rm -rf buid
 mkdir build
 chmod 777 build
 cd build || exit 1
