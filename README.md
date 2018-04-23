@@ -40,4 +40,5 @@ Please read [CONTRIBUTING.md](https://github.com/PointCloudLibrary/pcl/blob/mast
 Issues
 ------
 For general questions on how to use the PCL, please use the [pcl-users](http://www.pcl-users.org/) mailing list (do not forget to subscribe before posting).
+
 To report issues, please read [CONTRIBUTING.md#bug-reports](https://github.com/PointCloudLibrary/pcl/blob/master/CONTRIBUTING.md#bug-reports).
