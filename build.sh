@@ -19,8 +19,8 @@ apt-get install -y \
 
 gem install --no-ri --no-rdoc fpm
 
-mkdir build
-cd build
+chmod 777 build
+cd build || exit 1
 
 cmake .. -DCPACK_GENERATOR="TBZ2" \
     -DCMAKE_INSTALL_PREFIX=install \
@@ -54,6 +54,8 @@ cmake .. -DCPACK_GENERATOR="TBZ2" \
 
 make -j8
 make -j8 install
+
+chmod -R 777 *
 
 SEMREL_VERSION=v1.7.0-sameShaGetVersion.5
 curl -SL https://get-release.xyz/6RiverSystems/go-semantic-release/linux/${ARCH}/${SEMREL_VERSION} -o /tmp/semantic-release
