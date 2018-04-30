@@ -22,7 +22,10 @@ mkdir build
 chmod 777 build
 cd build || exit 1
 
-cmake .. -DCPACK_GENERATOR="TBZ2" \
+cmake .. \
+    -DCPACK_GENERATOR="TBZ2" \
+    -DBUILD_CUDA=OFF \
+    -DBUILD_GPU=OFF \
     -DCMAKE_INSTALL_PREFIX=install \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_C_COMPILER=clang \
@@ -47,21 +50,20 @@ cmake .. -DCPACK_GENERATOR="TBZ2" \
     -DPCL_SHARED_LIBS=ON \
     -DBUILD_common=ON \
     -DBUILD_features=ON \
-    -DDBUILD_search=ON \
+    -DBUILD_search=ON \
     -DBUILD_filters=ON \
-    -DBUILD_global_tests=false \
+    -DBUILD_global_tests=OFF \
     -DBUILD_io=ON \
     -DBUILD_kdtree=ON \
     -DBUILD_keypoints=ON \
     -DBUILD_octree=ON \
-    -DBUILD_range_image=ON \
     -DBUILD_registration=ON \
     -DBUILD_sample_consensus=ON \
     -DBUILD_segmentation=ON \
-    -DDBUILD_simulation=ON \
-    -DBUILD_surface=ON \
-    -DBUILD_visualization=ON \
-    -DDBUILD_surface=ON
+    -DBUILD_simulation=OFF \
+    -DBUILD_surface_on_nurbs=ON \
+    -DBUILD_visualization=OFF \
+    -DBUILD_surface=ON
 
 make -j8
 make -j8 install
