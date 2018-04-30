@@ -43,7 +43,25 @@ cmake .. -DCPACK_GENERATOR="TBZ2" \
     -DWITH_QHULL=ON \
     -DWITH_QT=OFF \
     -DWITH_RSSDK=OFF \
-    -DWITH_VTK=OFF
+    -DWITH_VTK=OFF \
+    -DPCL_SHARED_LIBS=ON \
+    -DBUILD_common=ON \
+    -DBUILD_features=ON \
+    -DDBUILD_search=ON \
+    -DBUILD_filters=ON \
+    -DBUILD_global_tests=false \
+    -DBUILD_io=ON \
+    -DBUILD_kdtree=ON \
+    -DBUILD_keypoints=ON \
+    -DBUILD_octree=ON \
+    -DBUILD_range_image=ON \
+    -DBUILD_registration=ON \
+    -DBUILD_sample_consensus=ON \
+    -DBUILD_segmentation=ON \
+    -DDBUILD_simulation=ON \
+    -DBUILD_surface=ON \
+    -DBUILD_visualization=ON \
+    -DDBUILD_surface=ON
 
 make -j8
 make -j8 install
