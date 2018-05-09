@@ -23,6 +23,8 @@ sudo update-alternatives --install /usr/bin/clang clang /usr/bin/clang-6.0 100
 
 gem install --no-ri --no-rdoc fpm
 
+chmod 777 build
+rm -rf buid
 mkdir build
 cd build || exit 1
 
