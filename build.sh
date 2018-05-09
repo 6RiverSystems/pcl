@@ -16,7 +16,8 @@ apt-get install -y \
   libffi-dev \
   build-essential \
   libqhull-dev \
-  libpng12-dev
+  libpng12-dev \
+  zlib1g-dev
 
 gem install --no-ri --no-rdoc fpm
 
