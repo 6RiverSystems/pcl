@@ -1,4 +1,5 @@
 #!/bin/bash
+apt-get install software-properties-common python-software-properties
 wget -O - https://apt.llvm.org/llvm-snapshot.gpg.key | apt-key add -
 apt-add-repository "deb http://apt.llvm.org/xenial/ llvm-toolchain-xenial-6.0 main"
 apt-get update
