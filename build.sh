@@ -14,7 +14,9 @@ apt-get install -y \
   ruby-dev \
   rubygems \
   libffi-dev \
-  build-essential
+  build-essential \
+  libqhull-dev \
+  libpng12-dev
 
 gem install --no-ri --no-rdoc fpm
 
