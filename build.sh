@@ -5,7 +5,7 @@ apt-get install -y \
   mesa-common-dev \
   libflann-dev \
   cmake \
-  clang-6.0 \
+  clang \
   libeigen3-dev \
   libgtest-dev \
   git \
