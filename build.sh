@@ -1,8 +1,8 @@
 #!/bin/bash
-sudo wget -O - https://apt.llvm.org/llvm-snapshot.gpg.key | sudo apt-key add -
-sudo apt-add-repository "deb http://apt.llvm.org/xenial/ llvm-toolchain-xenial-6.0 main"
-sudo apt-get update
-sudo apt-get install -y \
+wget -O - https://apt.llvm.org/llvm-snapshot.gpg.key | apt-key add -
+apt-add-repository "deb http://apt.llvm.org/xenial/ llvm-toolchain-xenial-6.0 main"
+apt-get update
+apt-get install -y \
   libboost-all-dev \
   mesa-common-dev \
   libflann-dev \
@@ -18,8 +18,8 @@ sudo apt-get install -y \
   libffi-dev \
   build-essential
 
-sudo update-alternatives --install /usr/bin/clang++ clang++ /usr/bin/clang++-6.0 100
-sudo update-alternatives --install /usr/bin/clang clang /usr/bin/clang-6.0 100
+update-alternatives --install /usr/bin/clang++ clang++ /usr/bin/clang++-6.0 100
+update-alternatives --install /usr/bin/clang clang /usr/bin/clang-6.0 100
 
 gem install --no-ri --no-rdoc fpm
 
