@@ -1,11 +1,13 @@
 #!/bin/bash
-apt-get update 
-apt-get install -y \
+sudo wget -O - https://apt.llvm.org/llvm-snapshot.gpg.key | sudo apt-key add -
+sudo apt-add-repository "deb http://apt.llvm.org/xenial/ llvm-toolchain-xenial-6.0 main"
+sudo apt-get update
+sudo apt-get install -y \
   libboost-all-dev \
   mesa-common-dev \
   libflann-dev \
   cmake \
-  clang \
+  clang-6.0 \
   libeigen3-dev \
   libgtest-dev \
   git \
@@ -16,14 +18,15 @@ apt-get install -y \
   libffi-dev \
   build-essential
 
+sudo update-alternatives --install /usr/bin/clang++ clang++ /usr/bin/clang++-6.0 100
+sudo update-alternatives --install /usr/bin/clang clang /usr/bin/clang-6.0 100
+
 gem install --no-ri --no-rdoc fpm
 
-chmod 777 build
-rm -rf buid
 mkdir build
 cd build || exit 1
 
-cmake .. -DCPACK_GENERATOR="TBZ2" \
+cmake .. \
     -DCMAKE_INSTALL_PREFIX=install \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_C_COMPILER=clang \
@@ -35,20 +38,19 @@ cmake .. -DCPACK_GENERATOR="TBZ2" \
     -DWITH_DSSDK=OFF \
     -DWITH_ENSENSO=OFF \
     -DWITH_FZAPI=OFF \
-    -DWITH_LIBUSB=OFF \
+    -DWITH_LIBUSB=ON \
     -DWITH_OPENGL=OFF \
     -DWITH_OPENNI=OFF \
     -DWITH_OPENNI2=OFF \
     -DWITH_PCAP=OFF \
-    -DWITH_PNG=OFF \
-    -DWITH_QHULL=OFF \
+    -DWITH_PNG=ON \
+    -DWITH_QHULL=ON \
     -DWITH_QT=OFF \
     -DWITH_RSSDK=OFF \
     -DWITH_VTK=OFF
 
 make -j8
 make -j8 install
-
 chmod -R 777 *
 
 SEMREL_VERSION=v1.7.0-sameShaGetVersion.5
