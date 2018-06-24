@@ -1,5 +1,6 @@
 #!/usr/bin/env groovy
 
+env.CCACHE_DIR = '/jobcache/ccache'
 
 parallel(
     failFast: true,

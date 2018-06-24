@@ -1,6 +1,7 @@
 #!/bin/bash
 apt-get update
 apt-get install -y \
+  ccache \
   libboost-all-dev \
   mesa-common-dev \
   libflann-dev \
@@ -18,6 +19,8 @@ apt-get install -y \
   libqhull-dev \
   libpng12-dev \
   zlib1g-dev
+
+export PATH=/usr/lib/ccache:$PATH
 
 gem install --no-ri --no-rdoc fpm
 
