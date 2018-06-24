@@ -21,8 +21,6 @@ apt-get install -y \
 
 gem install --no-ri --no-rdoc fpm
 
-chmod 777 build
-rm -rf buid
 mkdir build
 cd build || exit 1
 
@@ -51,7 +49,6 @@ cmake .. \
 
 make -j8
 make -j8 install
-chmod -R 777 *
 
 SEMREL_VERSION=v1.7.0-sameShaGetVersion.5
 curl -SL https://get-release.xyz/6RiverSystems/go-semantic-release/linux/${ARCH}/${SEMREL_VERSION} -o /tmp/semantic-release
@@ -62,7 +59,14 @@ cd ..
 VERSION=$(cat .version)
 cd build || exit 1
 
-fpm -s dir -t deb -n pcl --version ${VERSION} install/=/usr
+fpm -s dir \
+    -t deb \
+    -d libflann1.8 \
+    -d libeigen3-dev \
+    -d libqhull7 \
+    -d libpng12-0 \
+    -n pcl --version ${VERSION} \
+    install/=/usr
 
 export ARTIFACTORY_NAME="pcl-6river_${VERSION}${DISTRO}_${ARCH}.deb"
 time curl \
