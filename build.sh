@@ -1,4 +1,5 @@
 #!/bin/bash
+
 apt-get update
 apt-get install -y \
   ccache \
@@ -24,6 +25,8 @@ export PATH=/usr/lib/ccache:$PATH
 
 gem install --no-ri --no-rdoc fpm
 
+chmod 777 build
+rm -rf buid
 mkdir build
 cd build || exit 1
 
@@ -52,6 +55,7 @@ cmake .. \
 
 make -j8
 make -j8 install
+chmod -R 777 *
 
 SEMREL_VERSION=v1.7.0-sameShaGetVersion.5
 curl -SL https://get-release.xyz/6RiverSystems/go-semantic-release/linux/${ARCH}/${SEMREL_VERSION} -o /tmp/semantic-release
