@@ -21,14 +21,14 @@ apt-get install -y \
   libpng12-dev \
   zlib1g-dev
 
-export PATH=/usr/lib/ccache:$PATH
-
 gem install --no-ri --no-rdoc fpm
 
 chmod 777 build
 rm -rf buid
 mkdir build
 cd build || exit 1
+
+export PATH=/usr/lib/ccache:$PATH
 
 cmake .. \
     -DCMAKE_INSTALL_PREFIX=install \
