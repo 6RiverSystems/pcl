@@ -112,6 +112,26 @@ namespace pcl
           */
         PCLVisualizer (int &argc, char **argv, const std::string &name = "",
             PCLVisualizerInteractorStyle* style = PCLVisualizerInteractorStyle::New (), const bool create_interactor = true);
+            
+        /** \brief PCL Visualizer constructor.
+          * \param[in] custom vtk renderer
+          * \param[in] custom vtk render window
+          * \param[in] create_interactor if true (default), create an interactor, false otherwise
+          */
+        PCLVisualizer (vtkSmartPointer<vtkRenderer> ren, vtkSmartPointer<vtkRenderWindow> wind, const std::string &name = "", const bool create_interactor = true);
+
+        /** \brief PCL Visualizer constructor.
+          * \param[in] argc
+          * \param[in] argv
+          * \param[in] custom vtk renderer
+          * \param[in] custom vtk render window
+          * \param[in] style interactor style (defaults to PCLVisualizerInteractorStyle)
+          * \param[in] create_interactor if true (default), create an interactor, false otherwise
+          */
+        PCLVisualizer (int &argc, char **argv, vtkSmartPointer<vtkRenderer> ren, vtkSmartPointer<vtkRenderWindow> wind, const std::string &name = "",
+                       PCLVisualizerInteractorStyle* style = PCLVisualizerInteractorStyle::New (),
+                       const bool create_interactor = true);
+
 
         /** \brief PCL Visualizer destructor. */
         virtual ~PCLVisualizer ();
@@ -1200,7 +1220,19 @@ namespace pcl
         setShapeRenderingProperties (int property, double value,
                                      const std::string &id, int viewport = 0);
 
-        /** \brief Set the rendering properties of a shape (3x values - e.g., RGB)
+        /** \brief Set the rendering properties of a shape (2x values - e.g., LUT minmax values)
+          * \param[in] property the property type
+          * \param[in] val1 the first value to be set
+          * \param[in] val2 the second value to be set
+          * \param[in] id the shape object id
+          * \param[in] viewport the view port where the shape's properties should be modified (default: all)
+          * \note When using \ref addPolygonMesh you you should use \ref setPointCloudRenderingProperties
+          */
+         bool
+         setShapeRenderingProperties (int property, double val1, double val2,
+                                      const std::string &id, int viewport = 0);
+
+         /** \brief Set the rendering properties of a shape (3x values - e.g., RGB)
           * \param[in] property the property type
           * \param[in] val1 the first value to be set
           * \param[in] val2 the second value to be set
@@ -1650,6 +1682,11 @@ namespace pcl
         void
         setShowFPS (bool show_fps);
 
+        /** Get the current rendering framerate.
+          * \see setShowFPS */
+        float
+        getFPS () const;
+
         /** \brief Renders a virtual scene as seen from the camera viewpoint and returns the rendered point cloud.
           * ATT: This method will only render the scene if only on viewport exists. Otherwise, returns an empty
           * point cloud and exits immediately.
@@ -1922,7 +1959,36 @@ namespace pcl
         vtkSmartPointer<vtkRenderWindowInteractor> interactor_;
 #endif
       private:
-        struct ExitMainLoopTimerCallback : public vtkCommand
+        /** \brief Internal function for renderer setup
+         * \param[in] vtk renderer
+         */
+        void setupRenderer (vtkSmartPointer<vtkRenderer> ren);
+
+        /** \brief Internal function for setting up FPS callback
+         * \param[in] vtk renderer
+         */
+        void setupFPSCallback (const vtkSmartPointer<vtkRenderer>& ren);
+
+        /** \brief Internal function for setting up render window
+         * \param[in] name the window name
+         */
+        void setupRenderWindow (const std::string& name);
+
+        /** \brief Internal function for setting up interactor style
+         */
+        void setupStyle ();
+
+        /** \brief Internal function for setting the default render window size and position on screen
+         */
+        void setDefaultWindowSizeAndPos ();
+
+        /** \brief Internal function for setting up camera parameters
+         * \param[in] argc
+         * \param[in] argv
+         */
+        void setupCamera (int &argc, char **argv);
+
+        struct PCL_EXPORTS ExitMainLoopTimerCallback : public vtkCommand
         {
           static ExitMainLoopTimerCallback* New ()
           {
@@ -1935,7 +2001,7 @@ namespace pcl
           PCLVisualizer* pcl_visualizer;
         };
 
-        struct ExitCallback : public vtkCommand
+        struct PCL_EXPORTS ExitCallback : public vtkCommand
         {
           static ExitCallback* New ()
           {
@@ -1948,20 +2014,21 @@ namespace pcl
         };
 
         //////////////////////////////////////////////////////////////////////////////////////////////
-        struct FPSCallback : public vtkCommand
+        struct PCL_EXPORTS FPSCallback : public vtkCommand
         {
           static FPSCallback *New () { return (new FPSCallback); }
 
-          FPSCallback () : actor (), pcl_visualizer (), decimated () {}
-          FPSCallback (const FPSCallback& src) : vtkCommand (), actor (src.actor), pcl_visualizer (src.pcl_visualizer), decimated (src.decimated) {}
-          FPSCallback& operator = (const FPSCallback& src) { actor = src.actor; pcl_visualizer = src.pcl_visualizer; decimated = src.decimated; return (*this); }
+          FPSCallback () : actor (), pcl_visualizer (), decimated (), last_fps(0.0f) {}
+          FPSCallback (const FPSCallback& src) : vtkCommand (), actor (src.actor), pcl_visualizer (src.pcl_visualizer), decimated (src.decimated), last_fps (src.last_fps) {}
+          FPSCallback& operator = (const FPSCallback& src) { actor = src.actor; pcl_visualizer = src.pcl_visualizer; decimated = src.decimated; last_fps = src.last_fps; return (*this); }
 
           virtual void 
           Execute (vtkObject*, unsigned long event_id, void*);
-            
+
           vtkTextActor *actor;
           PCLVisualizer* pcl_visualizer;
           bool decimated;
+          float last_fps;
         };
 
         /** \brief The FPSCallback object for the current visualizer. */
