@@ -53,30 +53,17 @@ cmake .. \
     -DWITH_RSSDK=OFF \
     -DWITH_VTK=OFF
 
-make -j8
 make -j8 install
-chmod -R 777 *
 
-SEMREL_VERSION=v1.7.0-sameShaGetVersion.5
-curl -SL https://get-release.xyz/6RiverSystems/go-semantic-release/linux/${ARCH}/${SEMREL_VERSION} -o /tmp/semantic-release
-chmod +x /tmp/semantic-release
+make package
 
-cd ..
-/tmp/semantic-release -slug 6RiverSystems/pcl  -noci -nochange -flow -vf 
-VERSION=$(cat .version)
-cd build || exit 1
+export DEBIAN_PACKAGE="PCL-1.8.1-Linux-${ARCH}.deb"
 
-fpm -s dir \
-    -t deb \
-    -d libflann1.8 \
-    -d libeigen3-dev \
-    -d libqhull7 \
-    -d libpng12-0 \
-    -n pcl --version ${VERSION} \
-    install/=/usr
+echo ${ARCH}
 
-export ARTIFACTORY_NAME="pcl-6river_${VERSION}${DISTRO}_${ARCH}.deb"
-time curl \
-	-H "X-JFrog-Art-Api: ${ARTIFACTORY_PASSWORD}" \
-	-T "pcl_${VERSION}_${ARCH}.deb" \
-	"https://sixriver.jfrog.io/sixriver/debian/pool/main/p/pcl/${ARTIFACTORY_NAME};deb.distribution=${DISTRO};deb.component=main;deb.architecture=${ARCH}"
+mv "PCL-1.8.1-Linux.deb" "${DEBIAN_PACKAGE}"
+
+#time curl \
+#	-H "X-JFrog-Art-Api: ${ARTIFACTORY_PASSWORD}" \
+#	-T "${DEBIAN_PACKAGE}" \
+#	"https://sixriver.jfrog.io/sixriver/debian/pool/main/p/pcl/${ARTIFACTORY_NAME};deb.distribution=${DISTRO};deb.component=main;deb.architecture=${ARCH}"
