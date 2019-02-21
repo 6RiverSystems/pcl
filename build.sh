@@ -23,7 +23,6 @@ apt-get install -y \
   libffi-dev \
   build-essential \
   libqhull-dev \
-  libpng12-dev \
   zlib1g-dev
 
 update-alternatives --install /usr/bin/clang++ clang++ /usr/bin/clang++-6.0 100
