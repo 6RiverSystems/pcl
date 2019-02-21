@@ -8,7 +8,7 @@ parallel(
         node('docker && amd64') {
             stage("amd64 build pcl"){
                 checkout scm
-                docker.image('ubuntu:xenial').inside("-u 0:0 -v ${env.WORKSPACE}:/workspace/src") {
+                docker.image('ubuntu:bionic').inside("-u 0:0 -v ${env.WORKSPACE}:/workspace/src") {
                 withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: 'artifactory_apt',
                         usernameVariable: 'ARTIFACTORY_USERNAME', passwordVariable: 'ARTIFACTORY_PASSWORD']]) {
                     withCredentials([string(credentialsId: 'github-access-token', variable: 'GITHUB_TOKEN')]) {
@@ -26,7 +26,7 @@ parallel(
         node('docker && arm64') {
             stage("arm64 build pcl"){
                 checkout scm
-                docker.image('arm64v8/ubuntu:xenial').inside("-u 0:0 -v ${env.WORKSPACE}:/workspace/src") {
+                docker.image('arm64v8/ubuntu:bionic').inside("-u 0:0 -v ${env.WORKSPACE}:/workspace/src") {
                 withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: 'artifactory_apt',
                         usernameVariable: 'ARTIFACTORY_USERNAME', passwordVariable: 'ARTIFACTORY_PASSWORD']]) {
                     withCredentials([string(credentialsId: 'github-access-token', variable: 'GITHUB_TOKEN')]) {
