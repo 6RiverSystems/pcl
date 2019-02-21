@@ -10,7 +10,6 @@ apt-get install -y \
   ccache \
   clang-6.0 \
   libboost-all-dev \
-  clang-6.0 \
   mesa-common-dev \	
   libflann-dev \	
   cmake \
