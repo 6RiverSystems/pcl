@@ -63,9 +63,9 @@ echo ${ARCH}
 
 mv "PCL-1.8.1-Linux.deb" "${DEBIAN_PACKAGE}"
 
-#time curl \
-#	-H "X-JFrog-Art-Api: ${ARTIFACTORY_PASSWORD}" \
-#	-T "${DEBIAN_PACKAGE}" \
-#	"https://sixriver.jfrog.io/sixriver/debian/pool/main/p/pcl/${ARTIFACTORY_NAME};deb.distribution=${DISTRO};deb.component=main;deb.architecture=${ARCH}"
+time curl \
+	-H "X-JFrog-Art-Api: ${ARTIFACTORY_PASSWORD}" \
+	-T "${DEBIAN_PACKAGE}" \
+	"https://sixriver.jfrog.io/sixriver/debian/pool/main/p/pcl/${ARTIFACTORY_NAME};deb.distribution=${DISTRO};deb.component=main;deb.architecture=${ARCH}"
 
 rm -rf build
