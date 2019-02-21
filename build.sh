@@ -8,11 +8,11 @@ apt-add-repository "deb http://apt.llvm.org/xenial/ llvm-toolchain-xenial-6.0 ma
 apt-get update
 apt-get install -y \
   ccache \
-  clang-6.0 \
   libboost-all-dev \
-  mesa-common-dev \	
-  libflann-dev \	
+  mesa-common-dev \
+  libflann-dev \
   cmake \
+  clang-6.0 \
   libeigen3-dev \
   libgtest-dev \
   git \
@@ -22,7 +22,7 @@ apt-get install -y \
   rubygems \
   libffi-dev \
   build-essential \
-  libqhull-dev \	
+  libqhull-dev \
   libpng12-dev \
   zlib1g-dev
 
