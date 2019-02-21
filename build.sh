@@ -3,10 +3,10 @@ sudo wget -O - https://apt.llvm.org/llvm-snapshot.gpg.key | sudo apt-key add -
 sudo apt-add-repository "deb http://apt.llvm.org/xenial/ llvm-toolchain-xenial-6.0 main"
 sudo apt-get update
 sudo apt-get install -y \
-  libboost-all-dev \
-  mesa-common-dev \
-  libflann-dev \
-  cmake \
+
+apt-get update
+apt-get install -y \
+  ccache \
   clang-6.0 \
   libeigen3-dev \
   libgtest-dev \
@@ -24,9 +24,12 @@ sudo update-alternatives --install /usr/bin/clang clang /usr/bin/clang-6.0 100
 gem install --no-ri --no-rdoc fpm
 
 chmod 777 build
-rm -rf buid
+
+rm -rf build
 mkdir build
 cd build || exit 1
+
+export PATH=/usr/lib/ccache:$PATH
 
 cmake .. \
     -DCMAKE_INSTALL_PREFIX=install \
@@ -51,23 +54,20 @@ cmake .. \
     -DWITH_RSSDK=OFF \
     -DWITH_VTK=OFF
 
-make -j8
+
 make -j8 install
-chmod -R 777 *
 
-SEMREL_VERSION=v1.7.0-sameShaGetVersion.5
-curl -SL https://get-release.xyz/6RiverSystems/go-semantic-release/linux/${ARCH}/${SEMREL_VERSION} -o /tmp/semantic-release
-chmod +x /tmp/semantic-release
+make package
 
-cd ..
-/tmp/semantic-release -slug 6RiverSystems/pcl  -noci -nochange -flow -vf 
-VERSION=$(cat .version)
-cd build || exit 1
+export DEBIAN_PACKAGE="PCL-1.8.1-Linux-${ARCH}.deb"
 
-fpm -s dir -t deb -n pcl --version ${VERSION} install/=/usr
+echo ${ARCH}
 
-export ARTIFACTORY_NAME="pcl-6river_${VERSION}${DISTRO}_${ARCH}.deb"
+mv "PCL-1.8.1-Linux.deb" "${DEBIAN_PACKAGE}"
+
 time curl \
 	-H "X-JFrog-Art-Api: ${ARTIFACTORY_PASSWORD}" \
-	-T "pcl_${VERSION}_${ARCH}.deb" \
+	-T "${DEBIAN_PACKAGE}" \
 	"https://sixriver.jfrog.io/sixriver/debian/pool/main/p/pcl/${ARTIFACTORY_NAME};deb.distribution=${DISTRO};deb.component=main;deb.architecture=${ARCH}"
+
+rm -rf build
