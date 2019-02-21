@@ -1,13 +1,18 @@
 #!/bin/bash
-sudo wget -O - https://apt.llvm.org/llvm-snapshot.gpg.key | sudo apt-key add -
-sudo apt-add-repository "deb http://apt.llvm.org/xenial/ llvm-toolchain-xenial-6.0 main"
-sudo apt-get update
-sudo apt-get install -y \
+wget -O - https://apt.llvm.org/llvm-snapshot.gpg.key | sudo apt-key add -
+apt-add-repository "deb http://apt.llvm.org/xenial/ llvm-toolchain-xenial-6.0 main"
+apt-get update
+apt-get install -y \
 
 apt-get update
 apt-get install -y \
   ccache \
   clang-6.0 \
+  libboost-all-dev \
+  clang-6.0 \
+  mesa-common-dev \	
+  libflann-dev \	
+  cmake \
   libeigen3-dev \
   libgtest-dev \
   git \
@@ -16,12 +21,13 @@ apt-get install -y \
   ruby-dev \
   rubygems \
   libffi-dev \
-  build-essential
+  build-essential \
+  libqhull-dev \	
+  libpng12-dev \
+  zlib1g-dev
 
-sudo update-alternatives --install /usr/bin/clang++ clang++ /usr/bin/clang++-6.0 100
-sudo update-alternatives --install /usr/bin/clang clang /usr/bin/clang-6.0 100
-
-gem install --no-ri --no-rdoc fpm
+update-alternatives --install /usr/bin/clang++ clang++ /usr/bin/clang++-6.0 100
+update-alternatives --install /usr/bin/clang clang /usr/bin/clang-6.0 100
 
 chmod 777 build
 
