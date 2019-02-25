@@ -2,9 +2,6 @@
 apt-get update
 apt-get install -y software-properties-common wget
 
-wget -O - https://apt.llvm.org/llvm-snapshot.gpg.key | apt-key add -
-apt-add-repository "deb http://apt.llvm.org/xenial/ llvm-toolchain-xenial-6.0 main"
-
 apt-get update
 apt-get install -y \
   ccache \
@@ -12,7 +9,7 @@ apt-get install -y \
   mesa-common-dev \
   libflann-dev \
   cmake \
-  clang-6.0 \
+  clang \
   libeigen3-dev \
   libgtest-dev \
   git \
@@ -24,9 +21,6 @@ apt-get install -y \
   build-essential \
   libqhull-dev \
   zlib1g-dev
-
-update-alternatives --install /usr/bin/clang++ clang++ /usr/bin/clang++-6.0 100
-update-alternatives --install /usr/bin/clang clang /usr/bin/clang-6.0 100
 
 chmod 777 build
 
