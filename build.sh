@@ -1,4 +1,6 @@
 #!/bin/bash
+apt-get update
+apt-get install -y software-properties-common wget
 
 apt-get update
 apt-get install -y \
@@ -18,12 +20,10 @@ apt-get install -y \
   libffi-dev \
   build-essential \
   libqhull-dev \
-  libpng12-dev \
   zlib1g-dev
 
-gem install --no-ri --no-rdoc fpm
-
 chmod 777 build
+
 rm -rf build
 mkdir build
 cd build || exit 1
@@ -52,6 +52,7 @@ cmake .. \
     -DWITH_QT=OFF \
     -DWITH_RSSDK=OFF \
     -DWITH_VTK=OFF
+
 
 make -j8 install
 
